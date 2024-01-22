@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aaron.entity.Usuario;
@@ -19,6 +20,8 @@ import com.aaron.repository.UsuarioReposioty;
 
 
 @RestController
+@RequestMapping("/api")
+
 // Se le manda el puerto de la aplicacion en react
 @CrossOrigin("http://localhost:3000")
 public class UsuarioController {
@@ -27,12 +30,12 @@ public class UsuarioController {
 	private UsuarioReposioty repository;
 	
 	//Guardar Usuario
-	@PostMapping("/usuario")
+	@PostMapping("/user")
 	Usuario newUsuario (@RequestBody Usuario newUsuario) {
 		return repository.save(newUsuario);
 	}
 	
-	@GetMapping("/usuarios")
+	@GetMapping("/users")
 	List<Usuario> listarUsuarios() {
 		return repository.findAll();
 	}
